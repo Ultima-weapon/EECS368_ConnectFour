@@ -116,7 +116,7 @@ function drawGridCircles(){
 
 // Draw a new animated cicle
 function drawAnimatedCircle(){
-	if(moving){
+	if(moving && clickedTile_X >= 0 && clickedTile_Y >= 0){
 		drawACircle(newCircle_X, newCircle_Y, squareSize / 2 - innerBorder * 2, isPlayer1 ? 1 : 2, player1Color, player2Color, true);
 		drawACircle(newCircle_X, newCircle_Y, squareSize / 3 - innerBorder * 2, isPlayer1 ? 1 : 2, player1ColorDark, player2ColorDark, true);
 		newCircle_Y = Math.min(target_Y,newCircle_Y + animationSpeed * desiredFPS);
@@ -133,6 +133,8 @@ function drawAnimatedCircle(){
 				isPlayer1 = !isPlayer1;
 			}
 		}
+	} else {
+		moving = false;
 	}
 }
 
